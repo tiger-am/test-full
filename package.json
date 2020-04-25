@@ -2,11 +2,15 @@
   "name": "test-full",
   "version": "1.0.0",
   "description": "node express application",
-  "main": "app.js",
+  "main": "index.js",
   "author": "Alexander Morozov <tiger-am@ya.ru>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "start": "nodemon index"
+  },
   "devDependencies": {
+    "cors": "^2.8.5",
     "nodemon": "^2.0.3"
   },
   "dependencies": {
