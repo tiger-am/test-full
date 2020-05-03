@@ -1,11 +1,15 @@
 module.exports = {
-    login(req, res) {
+    getAll(req, res) {
         res.status(200).json({
-            login: 'from controller'
+            order: 'from controller'
         })
     },
 
-    register(req, res) {
+    getById(req, res) {
+
+    },
+
+    create(req, res) {
         res.status(201).json({
             reg: 'true'
         })
