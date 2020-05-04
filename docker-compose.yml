@@ -26,7 +26,7 @@ services:
 #    command: ./wait-for.sh db:27017 -- npx nodemon app.js
     depends_on:
       - mongodb
-    command: npx nodemon app.js
+#    command: npx nodemon app.js
 
   mongodb:
     image: mvertes/alpine-mongo

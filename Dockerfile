@@ -9,11 +9,11 @@ RUN chown -R node:node /home/node/app
 USER node
 COPY package.json ./
 
-RUN yarn
+#RUN yarn
 
 COPY --chown=node:node . .
 
 EXPOSE 5000
 EXPOSE 3000
 
-CMD yarn
+#CMD yarn
