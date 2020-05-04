@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const {Schema} = mongoose;
+const {Schema, model, Types} = require('mongoose');
 
 const schema = new Schema({
     name: {
@@ -11,15 +10,15 @@ const schema = new Schema({
         required: true
     },
     category: {
-        ref: 'categories',
-        type: Schema.Types.ObjectId,
+        ref: 'Category',
+        type: Types.ObjectId,
         required: true
     },
     user: {
-        ref: 'users',
-        type: Schema.Types.ObjectId,
+        ref: 'User',
+        type: Types.ObjectId,
         required: true
     }
 });
 
-module.exports = mongoose.model('positions', schema);
+module.exports = model('Position', schema);

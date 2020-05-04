@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const {Schema} = mongoose;
+const {Schema, model, Types} = require('mongoose');
 
 const schema = new Schema({
     date: {
@@ -18,16 +17,16 @@ const schema = new Schema({
             quantity: {
                 type: Number,
             },
-            cosr: {
+            cost: {
                 type: Number,
             }
         }
     ],
     user: {
-        ref: 'users',
-        type: Schema.Types.ObjectId,
+        ref: 'User',
+        type: Types.ObjectId,
         required: true
     }
 });
 
-module.exports = mongoose.model('orders', schema);
+module.exports = model('Order', schema);

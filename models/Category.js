@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const {Schema} = mongoose;
+const {Schema, model, Types} = require('mongoose');
 
 const schema = new Schema({
     name: {
@@ -12,10 +11,10 @@ const schema = new Schema({
         default: ''
     },
     user: {
-        ref: 'users',
-        type: Schema.Types.ObjectId,
+        ref: 'User',
+        type: Types.ObjectId,
         required: true
     }
 });
 
-module.exports = mongoose.model('categories', schema);
+module.exports = model('Category', schema);

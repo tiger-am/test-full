@@ -1,8 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-// const {findOne} = User;
-require('dotenv').config();
+const errorHandler = require('../utils/errorHandler');
 
 module.exports = {
     async login(req, res) {
@@ -62,9 +61,7 @@ module.exports = {
 
                 res.status(201).json(user)
             } catch (e) {
-                res.status(409).json({
-                    message: 'Такой E-mail уже занят. Попробуйте другой'
-                })
+                errorHandler(res, e)
             }
         }
     }

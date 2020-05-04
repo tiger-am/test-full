@@ -1,26 +1,29 @@
+const Category = require('../models/Category');
+const errorHandler = require('../utils/errorHandler');
+
 module.exports = {
-    getAll(req, res) {
-        res.status(200).json({
-            order: 'from controller'
-        })
+    async getAll(req, res) {
+        try {
+            const categories = await Category.find({user: req.user.id});
+            res.status(200).json(categories)
+        } catch (e) {
+            errorHandler(res, e)
+        }
     },
 
-    getById(req, res) {
-
-    },
-
-    create(req, res) {
-        res.status(201).json({
-            reg: 'true'
-        })
-    },
-
-    remove(req, res) {
+    async getById(req, res) {
 
     },
 
-    update(req, res) {
+    async create(req, res) {
 
     },
 
+    async remove(req, res) {
+
+    },
+
+    async update(req, res) {
+
+    },
 };

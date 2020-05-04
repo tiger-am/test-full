@@ -1,5 +1,8 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
 const analyticsRouter = require('./routes/analytics');
 const authRouter = require('./routes/auth');
@@ -31,6 +34,8 @@ mongoose.connect(url, options)
     .then(() => console.log('DB is CONNECTED'))
     .catch(e => console.log(e.message));
 
+app.use(passport.initialize());
+require('./middleware/passport')(passport);
 
 app.use(require('morgan')('dev'));
 app.use(express.json());
