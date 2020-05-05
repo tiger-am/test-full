@@ -14,6 +14,6 @@ COPY package.json ./
 COPY --chown=node:node . .
 
 EXPOSE 5000
-EXPOSE 3000
+EXPOSE 4200
 
 #CMD yarn
