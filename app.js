@@ -38,6 +38,7 @@ app.use(passport.initialize());
 require('./middleware/passport')(passport);
 
 app.use(require('morgan')('dev'));
+app.use('/uploads', express.static('uploads'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(require('cors')());
