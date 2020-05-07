@@ -3,10 +3,13 @@ export interface User {
   password: string
 }
 
-
 export interface Category {
   name: string
   image?: string
   user?: string
   _id?: string
+}
+
+export interface Message {
+  message: string
 }
