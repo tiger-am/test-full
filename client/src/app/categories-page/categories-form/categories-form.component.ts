@@ -6,7 +6,7 @@ import {of} from "rxjs";
 import {switchMap} from "rxjs/operators";
 import {MaterialService} from "../../shared/classes/material.service";
 import {Category} from "../../shared/interfaces";
-import {Observable} from "rxjs/internal/Observable";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-categories-form',
