@@ -4,8 +4,14 @@ declare var M;
 
 export interface MaterialInstance {
   open?(): void
+
   close?(): void
+
   destroy?(): void
+}
+
+export interface MaterialDatepicker extends MaterialInstance {
+  date?: Date
 }
 
 export class MaterialService {
@@ -27,5 +33,15 @@ export class MaterialService {
 
   static initTooltip(ref: ElementRef): MaterialInstance {
     return M.Tooltip.init(ref.nativeElement)
+  }
+
+  static initPicker(ref: ElementRef, onClose: () => void): MaterialDatepicker {
+    return M.Datepicker.init(ref.nativeElement, {
+      format: 'yyyy.mm.dd',
+      showClearBtn: true,
+      firstDay: 1,
+      onClose,
+      weekdaysShort: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
+    });
   }
 }
