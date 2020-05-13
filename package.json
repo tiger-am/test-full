@@ -7,15 +7,18 @@
     "license": "MIT",
     "private": true,
     "scripts": {
-        "server": "nodemon app",
-        "client": "yarn --cwd client run start",
+        "start": "cross-env NODE_ENV=production node app",
+        "server": "cross-env NODE_ENV=development nodemon app",
+        "client": "cross-env NODE_ENV=development yarn --cwd client run start",
+        "build": "cross-env NODE_ENV=production yarn --cwd client run build",
         "client-install": "yarn --cwd client run install",
-        "dev": "concurrently \"yarn server\" \"yarn client\""
+        "dev": "cross-env NODE_ENV=development concurrently \"yarn server\" \"yarn client\""
     },
     "dependencies": {
         "bcryptjs": "^2.4.3",
         "concurrently": "^5.2.0",
         "cors": "^2.8.5",
+        "cross-env": "^7.0.2",
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "jsonwebtoken": "^8.5.1",

@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
-
+const path = require('path');
 const analyticsRouter = require('./routes/analytics');
 const authRouter = require('./routes/auth');
 const categoryRouter = require('./routes/category');
@@ -31,7 +31,7 @@ const options = {
 };
 
 mongoose.connect(url, options)
-    .then(() => console.log('DB is CONNECTED'))
+    .then(() => console.log('DB CONNECTED'))
     .catch(e => console.log(e.message));
 
 app.use(passport.initialize());
@@ -49,7 +49,16 @@ app.use('/api/category', categoryRouter);
 app.use('/api/order', orderRouter);
 app.use('/api/position', positionRouter);
 
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(__dirname + '/client/dist/client'));
 
-// app.use('/', express.static(__dirname + '/views'));
+    app.get('*', (req, res)=> {
+        res.sendFile(
+            path.resolve(
+                __dirname, 'client', 'dist', 'client', 'index.html'
+            )
+        )
+    })
+}
 
-app.listen(PORT, () => console.log(`Server is started on port:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port:${PORT}`));
