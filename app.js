@@ -43,7 +43,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(require('cors')());
 
-app.use('/api/analitics', analyticsRouter);
+app.use('/api/analytics', analyticsRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/category', categoryRouter);
 app.use('/api/order', orderRouter);
